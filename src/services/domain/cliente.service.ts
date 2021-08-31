@@ -7,14 +7,15 @@ import { StorageService } from "../storage.service";
 
 @Injectable()
 export class ClienteService {
-
     constructor(public http: HttpClient, public storage: StorageService) {
+    }
 
+    findByID(id: string) {
+        return this.http.get(`${API_CONFIG.baseUrl}/clientes/${id}`);
     }
 
     findByEmail(email: string) {
-
-       return this.http.get(`${API_CONFIG.baseUrl}/clientes/email?value=${email}`);
+        return this.http.get(`${API_CONFIG.baseUrl}/clientes/email?value=${email}`);
     }
 
     getImageFromBucket(id: string) : Observable<any> {
